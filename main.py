@@ -89,7 +89,7 @@ def getProcessorInfo(procFile):
         return None
 
 if __name__ == '__main__':
-    print("Hello, World.")
+#    print("Hello, World.")
     createFile()
     getLocation()
     getProcessorInfo(procFile)
