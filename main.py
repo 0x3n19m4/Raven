@@ -30,7 +30,6 @@ def getIPInfo():
         response = requests.get(url)
         data = response.json()
     except "Not Found":
-#        print("[ - ] Url is unreachable")
         return None
 
     location = {
@@ -89,7 +88,6 @@ def getProcessorInfo(procFile):
         return None
 
 if __name__ == '__main__':
-#    print("Hello, World.")
     createFile()
     getLocation()
     getProcessorInfo(procFile)
